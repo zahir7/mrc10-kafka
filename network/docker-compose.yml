@@ -26,30 +26,7 @@ services:
     container_name: ca.example.com
     networks:
       - msline
-    
-  orderer.example.com:
-    container_name: orderer.example.com
-    image: hyperledger/fabric-orderer
-    environment:
-      - ORDERER_GENERAL_LOGLEVEL=info
-      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
-      - ORDERER_GENERAL_GENESISMETHOD=file
-      - ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/configtx/genesis.block
-      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
-      - ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/msp/orderer/msp
-      - CONFIGTX_ORDERER_BATCHTIMEOUT=1s
-      - CONFIGTX_ORDERER_ORDERERTYPE=kafka
-      - CONFIGTX_ORDERER_KAFKA_BROKERS=[kafka-zookeeper:9092]
-    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/orderer
-    command: orderer
-    ports:
-      - 7050:7050
-    volumes:
-        - ./config/:/etc/hyperledger/configtx
-        - ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/:/etc/hyperledger/msp/orderer
-        - ./crypto-config/peerOrganizations/MEDSOS.example.com/peers/peer0.MEDSOS.example.com/:/etc/hyperledger/msp/peerMEDSOS
-    networks:
-      - msline
+
 
     zookeeper:
         image: hyperledger/fabric-zookeeper
@@ -73,6 +50,31 @@ services:
             - "9092:9092"
         depends_on:
             - zookeeper
+    
+  
+  orderer.example.com:
+    container_name: orderer.example.com
+    image: hyperledger/fabric-orderer
+    environment:
+      - ORDERER_GENERAL_LOGLEVEL=info
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_GENESISMETHOD=file
+      - ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/configtx/genesis.block
+      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      - ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/msp/orderer/msp
+      - CONFIGTX_ORDERER_BATCHTIMEOUT=1s
+      - CONFIGTX_ORDERER_ORDERERTYPE=kafka
+      - CONFIGTX_ORDERER_KAFKA_BROKERS=[kafka-zookeeper:9092]
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/orderer
+    command: orderer
+    ports:
+      - 7050:7050
+    volumes:
+        - ./config/:/etc/hyperledger/configtx
+        - ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/:/etc/hyperledger/msp/orderer
+        - ./crypto-config/peerOrganizations/MEDSOS.example.com/peers/peer0.MEDSOS.example.com/:/etc/hyperledger/msp/peerMEDSOS
+    networks:
+      - msline
   
   peer0.MEDSOS.example.com:
     container_name: peer0.MEDSOS.example.com
