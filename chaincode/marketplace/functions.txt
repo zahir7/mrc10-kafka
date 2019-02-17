@@ -1,0 +1,33 @@
+
+*** USERS
+ [X] newUser() -> "userId"
+ [ ] grantPrivilege(userId) -> "ok/ko"
+
+*** SHOP
+ [~] buyItem([{shopId, itemId, quantity}, ...]) -> true/false
+ [~] buyRaw([{shopId, rawId, quantity}, ...]) -> true/false
+ [X] Bid(itemId, price) -> true/false
+
+*** SHOP ADMIN
+ [X] shopCreate(name) -> true/false
+ [X] shopAddUser(shopId, userId) -> true/false
+ [~] shopAddItem(name, price, isUnique[, bidLimitDate]) -> true/false
+ [~] shopAddRaw(rawId, price, quantity) -> true/false
+ [ ] shopSetItemQuantity(shopId, itemId, quantity)
+ [ ] shopSetRawQuantity(ShopId, rawId, quantity)
+
+ [ ] shopItemUpdateBid() /// Met en vente les produits qui etaient aux encheres
+ [ ] shopItemListSold() -> map des articles en cours de vente 
+ [ ] shopItemSetStatus(soldId, status, details)
+
+ [ ] shopRawListSold()
+ [ ] shopRawSetStatus(soldId, status, details)
+
+*** RAW
+ [X] new(name, details)
+ [X] update(id, newName, newDetails)
+
+*** ADMIN
+ [X] isAdmin(userId) -> true/false
+ [X] adminGet()
+ [X] adminSet(adminList string)
