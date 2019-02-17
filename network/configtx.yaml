@@ -15,10 +15,6 @@ Organizations:
             - Host: peer0.MEDSOS.example.com
               Port: 7051
 
-Application: &ApplicationDefaults
-
-    Organizations:
-
 Orderer: &OrdererDefaults
 
     OrdererType: kafka
@@ -32,7 +28,9 @@ Orderer: &OrdererDefaults
     Kafka:
         Brokers:
             - kafka-zookeeper:9092
-
+    Organizations:
+    
+Application: &ApplicationDefaults
     Organizations:
 
 Profiles:

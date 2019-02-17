@@ -26,7 +26,7 @@ services:
     container_name: ca.example.com
     networks:
       - msline
-
+  
     zookeeper:
         image: hyperledger/fabric-zookeeper
 #        restart: always
@@ -50,7 +50,6 @@ services:
         depends_on:
             - zookeeper
     
-  
   orderer.example.com:
     container_name: orderer.example.com
     image: hyperledger/fabric-orderer
