@@ -27,7 +27,7 @@ Orderer: &OrdererDefaults
         PreferredMaxBytes: 512 KB
     Kafka:
         Brokers:
-            - kafka-zookeeper:9092
+            - kafka0:9092
     Organizations:
     
 Application: &ApplicationDefaults
