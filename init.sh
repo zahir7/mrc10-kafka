@@ -107,5 +107,5 @@ docker_pull	ccenv	1.3.0
 docker_pull	tools	1.3.0
 docker_pull	couchdb	0.4.10
 docker_pull	ca		1.3.0
-docker_pull	fabric-kafka 0.4.10
+docker_pull	kafka 0.4.10
 success "Docker images pulled"
